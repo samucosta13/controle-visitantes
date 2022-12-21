@@ -95,6 +95,19 @@ class Visitante(models.Model):
     def get_placa_veiculo(self):
         if self.placa_veiculo:
             return self.placa_veiculo
+    
+    def get_cpf(self):
+        if self.cpf:
+            cpf = str(self.cpf)
+
+            cpf_parte_um = cpf[0:3]
+            cpf_parte_dois = cpf[3:6]
+            cpf_parte_tres = cpf[6:9]
+            cpf_parte_quatro = cpf[9:]
+
+            cpf_formatado = f"{cpf_parte_um}.{cpf_parte_dois}.{cpf_parte_tres}-{cpf_parte_quatro}"
+
+            return cpf_formatado
         
         return "Veículo não registrado"
 
